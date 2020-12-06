@@ -1,0 +1,13 @@
+
+# Created by https://www.toptal.com/developers/gitignore/api/java-web
+# Edit at https://www.toptal.com/developers/gitignore?templates=java-web
+
+### Java-Web ###
+## ignoring target file
+target/
+
+
+### Personalizado ###
+Modelo\ -\ Lista\ de\ requisitos.xlsx
+
+# End of https://www.toptal.com/developers/gitignore/api/java-web

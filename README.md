@@ -1,6 +1,6 @@
 # :building_construction: Construção De Software
 
-**Projeto academico desenvolvido na disciplina de Construção de Software, para o curso de Sistemas de Informação na Universidade Estadual De Goiás**
+**Projeto acadêmico desenvolvido na disciplina de Construção de Software, para o curso de Sistemas de Informação na Universidade Estadual De Goiás**
 
 A PeçaCerta – Auto Peças, é uma revenda de peças para veículos pequenos, médios e grandes entre veículos de passeio e de trabalho. Com mais de 20 anos de mercado, possui uma vasta gama de produtos em seu estoque, das mais variadas marcas e modelos existentes. Seus clientes são consumidores à varejo em busca de peças para conserto de veículos e até mesmo grandes empresas que buscam peças para repor peças defeituosas da sua frota de veículos.
 

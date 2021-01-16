@@ -8,8 +8,11 @@ target/
 
 
 ### Personalizado ###
-Modelo\ -\ Lista\ de\ requisitos.xlsx
-Lista\ de\ requisitos\ -\ Auto\ Peças.gsheet
-Aula\ Scrum.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.gsheet
+*.pdf
 
 # End of https://www.toptal.com/developers/gitignore/api/java-web

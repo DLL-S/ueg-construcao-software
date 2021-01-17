@@ -1,5 +1,5 @@
 # :thinking: Como contribuir ?
-Este é um projeto aberto que aceita contribuições via pull requests no GitHub. Este documento tem a responsabilidade de alinhar as contribuições de acordo com os padrões estabelecidos no mesmo.  
+Este é um projeto aberto que aceita contribuições via pull requests no GitHub. Este documento tem a responsabilidade de alinhar as contribuições de acordo com os padrões estabelecidos no mesmo.
 Em caso de dúvidas, [abra uma discussão](https://github.com/DLL-S/ueg-construcao-software/discussions).
 
 ## Fluxo de contribuição
@@ -12,17 +12,17 @@ Em caso de dúvidas, [abra uma discussão](https://github.com/DLL-S/ueg-construc
 7. Aguarde a revisão;
 
 ## Nomenclatura de branchs
-Novas branch devem ser criadas com **todas as letras do nome minusculas**, e em casos com mais de uma palavra, deve-se separar com um "**-**".  
+Novas branch devem ser criadas com **todas as letras do nome minusculas**, e em casos com mais de uma palavra, deve-se separar com um "**-**".
 Exemplos:
 - **diagrama-de-classes**
 - **casos-de-uso**
 
 ## Estilo dos commits
-Utilize uma mensagem descritiva no título, que expresse de forma bem resumida as alterações que foram realizadas.  
+Utilize uma mensagem descritiva no título, que expresse de forma bem resumida as alterações que foram realizadas.
 Exemplos:
-- `Adicionando controle de acesso`
-- `Altera README.md`
+- **Adicionando controle de acesso**
+- **Altera README.md**
 
 ### Estilo para Pull Request
-Assim como nos commits, utilize uma mensagem que descreva de forma geral tudo o que foi feito.  
+Assim como nos commits, utilize uma mensagem que descreva de forma geral tudo o que foi feito.
 Na descrição coloque informações mais detalhadas de cada alteração, e observações caso necessário.

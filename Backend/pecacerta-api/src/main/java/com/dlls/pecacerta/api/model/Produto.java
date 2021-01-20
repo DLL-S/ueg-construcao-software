@@ -1,14 +1,51 @@
 package com.dlls.pecacerta.api.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "ProdutosV04")
 public class Produto {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigo;
+	
+	@NotNull
+	@Column(name = "prod_codigo_de_barras")
 	private String codigoDeBarras;
+	
+	@NotNull
+	@Column(name = "prod_nome")
 	private String nome;
+	
+	
+	@Column(name = "prod_descricao", nullable=true)
 	private String descricao;
+	
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "prod_id_categoria")
 	private Categoria categoria;
+	
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "prod_id_marca")
 	private Marca marca;
+	
+	@NotNull
+	@Column(name = "prod_preco")
 	private Double preco;
+	
+	@NotNull
+	@Column(name = "prod_qtde_estoque")
 	private Integer qtdeEstoque;
 	
 	public Produto() {

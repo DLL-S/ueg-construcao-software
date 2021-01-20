@@ -16,7 +16,7 @@ public class Produto {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long codigo;
+	private Integer codigo;
 	
 	@NotNull
 	@Column(name = "prod_codigo_de_barras")
@@ -52,7 +52,7 @@ public class Produto {
 		
 	}
 
-	public Produto(Long codigo, String codigoDeBarras, String nome, String descricao, Categoria categoria,
+	public Produto(Integer codigo, String codigoDeBarras, String nome, String descricao, Categoria categoria,
 			Marca marca, Double preco, Integer qtdeEstoque) {
 		this.codigo = codigo;
 		this.codigoDeBarras = codigoDeBarras;
@@ -64,11 +64,11 @@ public class Produto {
 		this.qtdeEstoque = qtdeEstoque;
 	}
 
-	public Long getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Long codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 

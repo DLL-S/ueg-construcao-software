@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.dlls.pecacerta.api.utils.TipoFuncionario;
 
 @Entity
@@ -34,6 +36,7 @@ public class Funcionario {
 		
 		@Column(nullable = false, unique = true)
 		@Size(min = 11, max = 11)
+		@CPF
 		private String cpf;
 		
 		@Column(name = "data_nasc", nullable = false)

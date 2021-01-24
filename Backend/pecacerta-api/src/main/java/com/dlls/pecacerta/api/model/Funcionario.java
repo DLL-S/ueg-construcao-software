@@ -2,6 +2,8 @@ package com.dlls.pecacerta.api.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -27,36 +29,45 @@ public class Funcionario {
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Long codigo;
 		
-		@Column(nullable = false)
+		@Column(name = "func_nome", nullable = false)
 		@Size(min = 3, max = 60)
 		private String nome;
 		
-		@Column(name = "tipo_funcionario", nullable = false)
+		@Column(name = "func_tipo_funcionario", nullable = false)
 		@Enumerated(EnumType.STRING)
 		private TipoFuncionario tipoDeFuncionario;
 		
-		@Column(nullable = false, unique = true)
+		@Column(name = "func_cpf", nullable = false, unique = true)
 		@Size(min = 11, max = 11)
 		@CPF
 		private String cpf;
 		
-		@Column(name = "data_nasc", nullable = false)
+		@Column(name = "func_data_nasc", nullable = false)
 		private LocalDate dataNasc;
 		
 		@Embedded
 		@Valid
+		@AttributeOverrides({
+	        @AttributeOverride(name="logradouro", column=@Column(name="func_logradouro")),
+	        @AttributeOverride(name="numero", column=@Column(name="func_numero")),
+	        @AttributeOverride(name="complemento", column=@Column(name="func_complemento")),
+	        @AttributeOverride(name="bairro", column=@Column(name="func_bairro")),
+	        @AttributeOverride(name="cep", column=@Column(name="func_cep")),
+	        @AttributeOverride(name="cidade", column=@Column(name="func_cidade")),
+	        @AttributeOverride(name="estado", column=@Column(name="func_estado"))
+	    })
 		private Endereco endereco;
 		
-		@Column(nullable = false)
+		@Column(name = "func_email", nullable = false)
 		@Size(max = 40)
 		@Email
 		private String email;
 		
-		@Column(nullable = false)
+		@Column(name = "func_telefone", nullable = false)
 		@Size(min = 8, max = 12)
 		private String telefone;
 		
-		@Column(name = "senha_acesso", nullable = false)
+		@Column(name = "func_senha_acesso", nullable = false)
 		@Size(min = 8)
 		private String senhaAcesso;
 

@@ -36,7 +36,7 @@ public class FuncionarioService {
 		Funcionario savedFuncionario = findFuncionario(codigo);
 		
 		List<Funcionario> funcionarioComMesmoCpf = funcionarioRepository.findByCpf(updatedFuncionario.getCpf());
-		if(!funcionarioComMesmoCpf.isEmpty() ) {
+		if(!funcionarioComMesmoCpf.isEmpty()) {
 			for (Funcionario funcionario : funcionarioComMesmoCpf) {
 				if(funcionario.getCodigo() != savedFuncionario.getCodigo())
 					throw new FuncionarioAlreadyExistsException();

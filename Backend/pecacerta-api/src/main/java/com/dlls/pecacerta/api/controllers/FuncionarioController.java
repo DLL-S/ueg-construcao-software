@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dlls.pecacerta.api.events.ResourceCreatedEvent;
 import com.dlls.pecacerta.api.model.Funcionario;
 import com.dlls.pecacerta.api.repositories.FuncionarioRepository;
+import com.dlls.pecacerta.api.services.FuncionarioService;
 
 @RestController
 @RequestMapping("/api/v1/funcionarios")
@@ -27,6 +28,9 @@ public class FuncionarioController {
 
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
+	
+	@Autowired
+	private FuncionarioService funcionarioService;
 	
 	@Autowired
 	private ApplicationEventPublisher publisher;
@@ -47,7 +51,7 @@ public class FuncionarioController {
 	
 	@PostMapping
 	public ResponseEntity<?> create(@Valid @RequestBody Funcionario funcionario, HttpServletResponse response) {
-		Funcionario savedFuncionario = funcionarioRepository.save(funcionario);
+		Funcionario savedFuncionario = funcionarioService.save(funcionario);
 		
 		publisher.publishEvent(new ResourceCreatedEvent(this, response, savedFuncionario.getCodigo()));
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedFuncionario);

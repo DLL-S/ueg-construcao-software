@@ -107,4 +107,15 @@ public class PecaCertaExceptionHandler extends ResponseEntityExceptionHandler {
 		
 		return handleExceptionInternal(ex, errors, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
+	
+	@ExceptionHandler({ FuncionarioAlreadyExistsException.class })
+	public ResponseEntity<?> handleFuncionarioAlreadyExistsException(FuncionarioAlreadyExistsException ex, WebRequest request) {
+	
+		List<Error> errors = Arrays.asList(
+				new Error(messages.getMessage("message.funcionario-already-exists", null, LocaleContextHolder.getLocale()),
+				ExceptionUtils.getRootCauseMessage(ex))
+			);
+		
+		return handleExceptionInternal(ex, errors, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+	}
 }

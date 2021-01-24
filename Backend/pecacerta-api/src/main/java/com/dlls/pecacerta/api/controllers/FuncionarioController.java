@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,5 +56,11 @@ public class FuncionarioController {
 		
 		publisher.publishEvent(new ResourceCreatedEvent(this, response, savedFuncionario.getCodigo()));
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedFuncionario);
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<?> update(@PathVariable Long id, @Valid @RequestBody Funcionario funcionario) {
+		Funcionario savedFuncionario = funcionarioService.update(id, funcionario);
+		return ResponseEntity.ok(savedFuncionario);
 	}
 }

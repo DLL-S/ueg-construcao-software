@@ -1,4 +1,4 @@
-package com.dlls.pecacerta.api.controller;
+package com.dlls.pecacerta.api.controllers;
 
 import java.util.HashMap;
 import java.util.List;

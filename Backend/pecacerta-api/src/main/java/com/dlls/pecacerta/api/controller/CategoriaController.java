@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dlls.pecacerta.api.exception.ResourceNotFoundException;
+import com.dlls.pecacerta.api.exceptions.ResourceNotFoundException;
 import com.dlls.pecacerta.api.model.Categoria;
 import com.dlls.pecacerta.api.repositories.CategoriaRepository;
 

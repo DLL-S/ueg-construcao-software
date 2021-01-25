@@ -11,11 +11,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "ProdutosV04")
+@Table(name = "Produtos")
 public class Produto {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "prod_codigo")
 	private Long codigo;
 	
 	@NotNull

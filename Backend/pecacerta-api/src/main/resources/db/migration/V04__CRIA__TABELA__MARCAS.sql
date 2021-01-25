@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS Marcas (
+	marca_codigo SERIAL PRIMARY KEY,
+	marca_nome VARCHAR(50) NOT NULL UNIQUE
+);

@@ -28,23 +28,23 @@ public class Funcionario {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Long codigo;
-		
+
 		@Column(name = "func_nome", nullable = false)
 		@Size(min = 3, max = 60)
 		private String nome;
-		
+
 		@Column(name = "func_tipo_funcionario", nullable = false)
 		@Enumerated(EnumType.STRING)
 		private TipoFuncionario tipoDeFuncionario;
-		
+
 		@Column(name = "func_cpf", nullable = false, unique = true)
 		@Size(min = 11, max = 11)
 		@CPF
 		private String cpf;
-		
+
 		@Column(name = "func_data_nasc", nullable = false)
 		private LocalDate dataNasc;
-		
+
 		@Embedded
 		@Valid
 		@AttributeOverrides({
@@ -57,19 +57,15 @@ public class Funcionario {
 	        @AttributeOverride(name="estado", column=@Column(name="func_estado"))
 	    })
 		private Endereco endereco;
-		
+
 		@Column(name = "func_email", nullable = false)
 		@Size(max = 40)
 		@Email
 		private String email;
-		
+
 		@Column(name = "func_telefone", nullable = false)
 		@Size(min = 8, max = 12)
 		private String telefone;
-		
-		@Column(name = "func_senha_acesso", nullable = false)
-		@Size(min = 8)
-		private String senhaAcesso;
 
 		public Long getCodigo() {
 			return codigo;
@@ -131,6 +127,10 @@ public class Funcionario {
 			return telefone;
 		}
 
+		public void setTelefone(String telefone) {
+			this.telefone = telefone;
+		}
+
 		@Override
 		public int hashCode() {
 			final int prime = 31;
@@ -154,17 +154,5 @@ public class Funcionario {
 			} else if (!codigo.equals(other.codigo))
 				return false;
 			return true;
-		}
-
-		public void setTelefone(String telefone) {
-			this.telefone = telefone;
-		}
-
-		public String getSenhaAcesso() {
-			return senhaAcesso;
-		}
-
-		public void setSenhaAcesso(String senhaAcesso) {
-			this.senhaAcesso = senhaAcesso;
 		}
 }

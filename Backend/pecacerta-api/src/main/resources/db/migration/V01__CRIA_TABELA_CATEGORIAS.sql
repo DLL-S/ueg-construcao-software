@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS Categorias (
+	cat_codigo SERIAL PRIMARY KEY,
+	cat_nome VARCHAR(50) NOT NULL UNIQUE
+);

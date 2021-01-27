@@ -1,4 +1,4 @@
-package com.dlls.pecacerta.api.model;
+package com.dlls.pecacerta.api.utils;
 
 public enum EnumTipoCliente {
 	PESSOA_FISICA,

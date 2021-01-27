@@ -19,23 +19,23 @@ public class ClienteService {
 	@Autowired
 	private ClienteRepository clienteRepository;
 
-	public Cliente findCliente(Integer codigo) {
+	public Cliente findCliente(Long codigo) {
 		Cliente savedPerson = clienteRepository.findById(codigo)
 				.orElseThrow(() -> new ClienteNoneExistentException());
 		return savedPerson;
 	}
 
 	public Cliente save(@Valid Cliente cliente) {
-		if (!clienteRepository.findByCpf_cnpj(cliente.getCpf_cnpj()).isEmpty())
+		if (!clienteRepository.findByCpfCnpj(cliente.getCpfCnpj()).isEmpty())
 			throw new ClienteAlreadyExistsException();
 
 		return clienteRepository.save(cliente);
 	}
 
-	public Cliente update(Integer codigo, @Valid Cliente updatedCliente) {
+	public Cliente update(Long codigo, @Valid Cliente updatedCliente) {
 		Cliente savedCliente = findCliente(codigo);
 		
-		List<Cliente> clienteComMesmoCpf = clienteRepository.findByCpf_cnpj(updatedCliente.getCpf_cnpj());
+		List<Cliente> clienteComMesmoCpf = clienteRepository.findByCpfCnpj(updatedCliente.getCpfCnpj());
 		if(!clienteComMesmoCpf.isEmpty()) {
 			for (Cliente cliente : clienteComMesmoCpf) {
 				if(cliente.getCodigo() != savedCliente.getCodigo())

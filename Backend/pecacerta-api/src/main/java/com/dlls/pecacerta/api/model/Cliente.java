@@ -17,13 +17,15 @@ import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
+import com.dlls.pecacerta.api.utils.EnumTipoCliente;
+
 @Entity
 @Table(name = "clientes")
 public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer codigo;
+	private Long codigo;
 
 	@Column(name = "cli_nome", nullable = false)
 	@Size(min = 3, max = 60)
@@ -33,9 +35,9 @@ public class Cliente {
 	@Enumerated(EnumType.STRING)
 	private EnumTipoCliente tipoCliente;
 
-	@Column(name = "cli_cpf", nullable = false, unique = true)
+	@Column(name = "cli_cpf_cnpj", nullable = false, unique = true)
 	@Size(min = 11, max = 11)
-	private String cpf_cnpj;
+	private String cpfCnpj;
 
 	@Column(name = "cli_data_nasc", nullable = false)
 	private LocalDate dataDeNascimento;
@@ -62,11 +64,11 @@ public class Cliente {
 	@Size(min = 8, max = 12)
 	private String telefone;
 
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 
@@ -86,12 +88,12 @@ public class Cliente {
 		this.tipoCliente = tipoCliente;
 	}
 	
-	public String getCpf_cnpj() {
-		return cpf_cnpj;
+	public String getCpfCnpj() {
+		return cpfCnpj;
 	}
 	
-	public void setCpf_cnpj(String cpf_cnpj) {
-		this.cpf_cnpj = cpf_cnpj;
+	public void setCpfCnpj(String cpf_cnpj) {
+		this.cpfCnpj = cpf_cnpj;
 	}
 	
 	public LocalDate getDataDeNascimento() {

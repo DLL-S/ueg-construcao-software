@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dlls.pecacerta.api.events.ResourceCreatedEvent;
 import com.dlls.pecacerta.api.model.Cliente;
 import com.dlls.pecacerta.api.repositories.ClienteRepository;
 import com.dlls.pecacerta.api.services.ClienteService;
@@ -43,7 +44,7 @@ public class ClienteController {
 	}
 	
 	@GetMapping("/{codigo}")
-	public ResponseEntity<?> getById(@PathVariable Integer codigo) {
+	public ResponseEntity<?> getById(@PathVariable Long codigo) {
 		Optional<Cliente> clientes = clienteRepository.findById(codigo); 
 		return clientes.isEmpty() ? 
 				ResponseEntity.notFound().build() : ResponseEntity.ok(clientes);
@@ -58,7 +59,7 @@ public class ClienteController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> update(@PathVariable Integer id, @Valid @RequestBody Cliente cliente) {
+	public ResponseEntity<?> update(@PathVariable Long id, @Valid @RequestBody Cliente cliente) {
 		Cliente savedCliente = clienteService.update(id, cliente);
 		return ResponseEntity.ok(savedCliente);
 	}

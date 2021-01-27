@@ -10,17 +10,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Marcas")
 public class Marca {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "marca_codigo")
 	private Long codigo;
-	
+
 	@Column(name = "marca_nome")
 	private String nome;
-	
+
 	public Marca() {
-		
+
 	}
 
 	public Marca(Long codigo, String nome) {
@@ -43,6 +43,4 @@ public class Marca {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
 }

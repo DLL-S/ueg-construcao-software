@@ -1,0 +1,39 @@
+.container-logo {
+    background-color: white;
+    margin: auto;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    border-width: 2px;
+    border-style:solid;
+    border-color: #C3CFD9;
+    margin-top: 4%;
+    margin-bottom: 1.5%;
+  }
+  
+.logo {
+    width: 90%;
+    height: auto;
+  }
+
+
+.user{
+    display:grid;
+    padding: 5px;
+    width: 250px;
+}
+
+.password{
+    display:grid;
+    padding: 5px;
+}
+
+.button-login{
+    background-color: #18778C;
+    margin: auto;
+    width: 100px;
+    margin-top: 7%;
+}
+

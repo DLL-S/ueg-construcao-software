@@ -1,0 +1,26 @@
+<div class="teste p-d-flex p-flex-column p-jc-center">
+    <div class="container-logo p-d-flex p-jc-center">
+        <img class="logo" src="assets/logo.png">
+    </div>
+    
+
+    <div class="container-login p-d-flex p-jc-center">
+        <form #loginForm="ngForm" class="p-d-flex p-flex-column">
+
+            <div class="user">
+                <label for="username">E-mail</label>
+                <input class="p-mb-2" pInputText ngModel name="username" type="text" required aria-describedby="username-helper"
+                    placeholder="Insira o email">
+            </div>
+            <div class="password">
+                <label for="username">Senha</label>
+                <input class="p-mb-2" pInputText ngModel name="username" type="password" required aria-describedby="password-helper"
+                    placeholder="********">
+            </div>
+            <button class="button-login" pButton type="submit" [disabled]="!loginForm.valid" label="Entrar"></button>
+
+        </form>
+    </div>
+
+
+</div>

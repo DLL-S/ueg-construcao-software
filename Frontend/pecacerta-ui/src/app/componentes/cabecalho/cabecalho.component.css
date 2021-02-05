@@ -1,0 +1,49 @@
+a{
+    
+    margin-left: 30px;
+    text-decoration: none;
+    color: #293845;
+    opacity: 100%;
+    transition: opacity 1s;
+    vertical-align: sub;
+}
+
+a:hover{
+    margin-left: 30px;
+    text-decoration: none;
+    color: #7F8F9C;
+    opacity: 75%;
+    transition: opacity 1s;
+    font-weight: 700;
+}
+
+nav{
+    align-items: center;    
+    position: sticky;
+    z-index: 20000;
+
+}
+
+.espacador{
+    width: 400px;
+}
+
+i{
+    font-size: 30px;
+    color: #18778C;
+    vertical-align: bottom;
+}
+
+.logo-pagina img{
+    width: 70px;
+    height: 70px;
+    margin: -5px;
+}
+
+.principal{
+    width: 1000px;
+    height: 70px;
+   align-items: center;    
+    display: flex;
+    margin: 0% auto;
+}

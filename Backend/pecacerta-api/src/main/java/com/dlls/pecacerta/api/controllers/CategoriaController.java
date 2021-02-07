@@ -15,15 +15,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dlls.pecacerta.api.exceptions.ResourceNotFoundException;
 import com.dlls.pecacerta.api.model.Categoria;
-import com.dlls.pecacerta.api.model.Produto;
 import com.dlls.pecacerta.api.repositories.CategoriaRepository;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1/")
 public class CategoriaController {
@@ -72,8 +70,8 @@ public class CategoriaController {
 		return ResponseEntity.ok().body(categoria);
 	}
 	
-	@GetMapping("categorias")
-	public List<Categoria> listarMarcas() {
+	@GetMapping("categoria")
+	public List<Categoria> listarCategorias() {
 		
 		return this.categoriaRepository.findAll();
 	}

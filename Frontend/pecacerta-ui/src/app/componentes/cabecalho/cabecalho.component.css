@@ -1,5 +1,5 @@
 a{
-    
+
     margin-left: 30px;
     text-decoration: none;
     color: #293845;
@@ -18,7 +18,7 @@ a:hover{
 }
 
 nav{
-    align-items: center;    
+    align-items: center;
     position: sticky;
     z-index: 20000;
 
@@ -43,7 +43,11 @@ i{
 .principal{
     width: 1000px;
     height: 70px;
-   align-items: center;    
+   align-items: center;
     display: flex;
     margin: 0% auto;
+}
+
+.icone-usuario{
+  margin-top: -8px;
 }

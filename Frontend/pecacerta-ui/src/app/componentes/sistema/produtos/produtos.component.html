@@ -1,0 +1,92 @@
+<app-cabecalho></app-cabecalho>
+<section class='produtos'>
+  <form #produtoForm="ngForm" >
+  <div class='linhaUm linhas'>
+    <div class='field codBarras'>
+      <h4>Codigo de barras*</h4>
+      <input type="text" pInputText>
+    </div>
+    <div class='field nome'>
+      <h4>Nome*</h4>
+      <input type="text" pInputText>
+      <-- [(ngModel)]="value1" -->
+    </div>
+  </div>
+
+  <div class='linhaDois linhas'>
+    <div class='field descricao'>
+      <h4>Descrição</h4>
+      <input type="text" pInputText>
+      <-- [(ngModel)]="value1" -->
+    </div>
+  </div>
+
+  <div class='linhaTres linhas'>
+    <div class='field'>
+      <h4>Categoria*</h4>
+      <p-dropdown optionLabel="name">
+
+      </p-dropdown>
+    </div>
+    <div class='field'>
+      <h4>Marca*</h4>
+      <p-dropdown optionLabel="name">
+        <-- [options]="produtos" [(ngModel)]="selectedCity" -->
+
+      </p-dropdown>
+    </div>
+    <div class='field'>
+      <h4>Preço</h4>
+      <input type="text" pInputText>
+      <-- [(ngModel)]="value1" -->
+    </div>
+    <div class='field'>
+      <h4>Quantidade inicial</h4>
+      <input type="text" pInputText>
+      <-- [(ngModel)]="value1" -->
+    </div>
+  </div>
+
+  <button class="button-salvar" pButton type="submit" [disabled]="!produtoForm.valid" label="Salvar"></button>
+  </form>
+  <div class="card">
+    <h5>Produtos</h5>
+    <p-table [value]="produtos" dataKey="codigo" editMode="row">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th style="width:8rem"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-produto let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="produto">
+                <td>
+                    {{produto.codigo}}
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="produto.nome" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{produto.nome}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+
+                <td style="text-align:center">
+                    <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
+                        (click)="onRowEditInit(produto)" class="p-button-rounded p-button-text"></button>
+                    <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"
+                        (click)="onRowEditSave(produto)"
+                        class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                    <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
+                        (click)="onRowEditCancel(produto, ri)"
+                        class="p-button-rounded p-button-text p-button-danger"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+</section>

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './componentes/login/login.component';
-
+import {DropdownModule} from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
@@ -14,6 +14,7 @@ import { CategoriasComponent } from './componentes/sistema/categorias/categorias
 import {TableModule} from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriaService } from './services/categoria-service';
+import { ProdutosComponent } from './componentes/sistema/produtos/produtos.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CategoriaService } from './services/categoria-service';
     LoginComponent,
     BarraLateralComponent,
     CabecalhoComponent,
-    CategoriasComponent
+    CategoriasComponent,
+    ProdutosComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { CategoriaService } from './services/categoria-service';
     FormsModule,
     ButtonModule,
     TableModule,
-    HttpClientModule
+    HttpClientModule,
+    DropdownModule
   ],
   providers: [CategoriaService],
   bootstrap: [AppComponent]

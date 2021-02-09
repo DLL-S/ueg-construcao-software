@@ -2,20 +2,24 @@
     <div class="container-logo p-d-flex p-jc-center">
         <img class="logo" src="assets/logo.png">
     </div>
-    
+
 
     <div class="container-login p-d-flex p-jc-center">
         <form #loginForm="ngForm" class="p-d-flex p-flex-column">
 
             <div class="user">
                 <label for="username">E-mail</label>
-                <input class="p-mb-2" pInputText ngModel name="username" type="text" required aria-describedby="username-helper"
-                    placeholder="Insira o email">
+                <input class="p-mb-2" pInputText name="usuario" type="email" ngModel #usuario="ngModel" email required
+                    aria-describedby="usuario-helper" placeholder="Insira o email">
+                    <app-mensagens id="usuario-helper" [control]="usuario" error="required" text="Informe um e-mail"></app-mensagens>
+                    <app-mensagens id="usuario-helper" [control]="usuario" error="email" text="Informe um e-mail válido"></app-mensagens>
             </div>
             <div class="password">
                 <label for="username">Senha</label>
-                <input class="p-mb-2" pInputText ngModel name="username" type="password" required aria-describedby="password-helper"
-                    placeholder="********">
+                <input class="p-mb-2" pInputText name="senha" type="password" ngModel #senha="ngModel" required minlength="8"
+                aria-describedby="senha-helper" placeholder="********">
+                <app-mensagens id="senha-helper" [control]="senha" error="required" text="Informe sua senha"></app-mensagens>
+                <app-mensagens id="senha-helper" [control]="senha" error="minlength" text="No mínimo 8 caracteres"></app-mensagens>
             </div>
             <button class="button-login" pButton type="submit" [disabled]="!loginForm.valid" label="Entrar"></button>
 

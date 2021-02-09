@@ -1,3 +1,14 @@
+:host {
+  background: #DFE6ED;
+  color:#17212F;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100
+}
+
 .container-logo {
     background-color: white;
     margin: auto;
@@ -9,31 +20,34 @@
     border-width: 2px;
     border-style:solid;
     border-color: #C3CFD9;
-    margin-top: 4%;
+    margin-top: 6%;
     margin-bottom: 1.5%;
   }
-  
+
 .logo {
     width: 90%;
     height: auto;
   }
 
 
-.user{
+.user {
     display:grid;
     padding: 5px;
     width: 250px;
 }
 
-.password{
+.password {
     display:grid;
     padding: 5px;
 }
 
-.button-login{
+.button-login {
     background-color: #18778C;
     margin: auto;
     width: 100px;
-    margin-top: 7%;
+    margin-top: 4%;
 }
 
+.button-login:hover {
+  background-color: #02aed4;
+}

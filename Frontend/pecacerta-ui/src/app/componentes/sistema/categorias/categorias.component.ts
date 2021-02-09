@@ -10,35 +10,33 @@ import { SelectItem } from 'primeng/api';
 })
 export class CategoriasComponent implements OnInit {
 
-  categorias: Categoria[] = [];
-  clonedCategorias : {
-    [s:string]:Categoria;
-  } = {};
+  categorias: Categoria[];
+  clonedCategorias: { [s: string]: Categoria; } = {};
 
-  constructor(private categoriaService : CategoriaService) {
-   }
+  constructor(private categoriaService: CategoriaService) {
+  }
 
   ngOnInit(): void {
-    this.categoriaService.read().subscribe(Response => {this.categorias = Response});    
+    this.categoriaService.read().subscribe(Response => { this.categorias = Response });
   }
 
   onRowEditInit(categoria: Categoria) {
-    if(categoria.codigo)
-    this.clonedCategorias[categoria.codigo] = {...categoria};
-}
-
-onRowEditSave(categoria: Categoria) {
     if (categoria.codigo)
-        delete this.clonedCategorias[categoria.codigo];
-      this.categoriaService.update(categoria);
-    
-}
-
-onRowEditCancel(categoria: Categoria, index: number) {
-  if(categoria.codigo){
-    this.categorias[index] = this.clonedCategorias[categoria.codigo];
-    delete this.categorias[categoria.codigo];
+      this.clonedCategorias[categoria.codigo] = { ...categoria };
   }
-}
+
+  onRowEditSave(categoria: Categoria) {
+    if (categoria.codigo)
+      delete this.clonedCategorias[categoria.codigo];
+    this.categoriaService.update(categoria);
+
+  }
+
+  onRowEditCancel(categoria: Categoria, index: number) {
+    if (categoria.codigo) {
+      this.categorias[index] = this.clonedCategorias[categoria.codigo];
+      delete this.categorias[categoria.codigo];
+    }
+  }
 
 }

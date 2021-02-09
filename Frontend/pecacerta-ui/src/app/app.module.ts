@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { CardModule } from 'primeng/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { CategoriaService } from './services/categoria-service';
 import { MensagensComponent } from './componentes/utils/mensagens/mensagens.component';
 import { PaginaConstrucaoComponent } from './componentes/utils/pagina-construcao/pagina-construcao.component';
 import { PaginaNaoEncontradaComponent } from './componentes/utils/pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { MarcasComponent } from './componentes/sistema/marcas/marcas.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { PaginaNaoEncontradaComponent } from './componentes/utils/pagina-nao-enc
     CategoriasComponent,
     MensagensComponent,
     PaginaConstrucaoComponent,
-    PaginaNaoEncontradaComponent
+    PaginaNaoEncontradaComponent,
+    MarcasComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { PaginaNaoEncontradaComponent } from './componentes/utils/pagina-nao-enc
     InputTextModule,
     FormsModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    CardModule
   ],
   providers: [CategoriaService],
   bootstrap: [AppComponent]

@@ -4,9 +4,9 @@
 
     <form #categoriaForm="ngForm" class="p-d-flex p-flex-column">
         <label for="categoria">Categoria</label>
-        <input class="p-mb-2" pInputText ngModel name="categoria" type="text" required
+        <input class="p-mb-2" pInputText ngModel name="categoria" type="text" required [(ngModel)]="categoria.nome"
             placeholder="Insira o nome da categoria">
-        <button class="button-salvar" pButton type="submit" [disabled]="!categoriaForm.valid" label="Salvar"></button>
+        <button class="button-salvar" pButton type="submit" [disabled]="!categoriaForm.valid" (click)="onSubmit()" label="Salvar"></button>
     </form>
 
     <div class="card">

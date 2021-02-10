@@ -10,6 +10,10 @@ import { SelectItem } from 'primeng/api';
 })
 export class CategoriasComponent implements OnInit {
 
+  categoria : Categoria = new Categoria();
+  submitted = false;
+
+
   categorias: Categoria[] = [];
   clonedCategorias : {
     [s:string]:Categoria;
@@ -22,6 +26,21 @@ export class CategoriasComponent implements OnInit {
     this.categoriaService.read().subscribe(Response => {this.categorias = Response});    
   }
 
+  save() {
+    this.categoriaService
+    .create(this.categoria).subscribe(data => {
+      console.log(data)
+      this.categoria = new Categoria();
+    }, 
+    error => console.log(error));
+  }
+
+  onSubmit(){
+    this.submitted = true;
+    this.save();
+    this.categoriaService.read().subscribe(Response => {this.categorias = Response});    
+  }
+
   onRowEditInit(categoria: Categoria) {
     if(categoria.codigo)
     this.clonedCategorias[categoria.codigo] = {...categoria};
@@ -29,8 +48,7 @@ export class CategoriasComponent implements OnInit {
 
 onRowEditSave(categoria: Categoria) {
     if (categoria.codigo)
-        delete this.clonedCategorias[categoria.codigo];
-      this.categoriaService.update(categoria);
+      this.categoriaService.update(categoria.codigo);
     
 }
 

@@ -6,7 +6,7 @@
     left: 0;
     width: 100vw;
     height: 5.5vw;
-    z-index: 10000
+    z-index: 10000;
 }
 
 .principal {
@@ -15,6 +15,7 @@
     align-items: center;
     display: flex;
     margin: auto;
+    overflow: hidden;
 }
 
 .logo-pagina img {

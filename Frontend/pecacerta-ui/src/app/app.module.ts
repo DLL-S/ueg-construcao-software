@@ -2,21 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-
-import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './componentes/login/login.component';
-import {DropdownModule} from 'primeng/dropdown';
-import {InputTextModule} from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
-import {ButtonModule} from 'primeng/button';
-import { BarraLateralComponent } from './componentes/sistema/barra-lateral/barra-lateral.component';
+import { ButtonModule } from 'primeng/button';
 import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
 import { BarraLateralComponent } from './componentes/sistema/barra-lateral/barra-lateral.component';
 import { CategoriasComponent } from './componentes/sistema/categorias/categorias.component';

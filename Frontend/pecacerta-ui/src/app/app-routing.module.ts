@@ -1,3 +1,4 @@
+import { ProdutosComponent } from './componentes/sistema/produtos/produtos.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './componentes/login/login.component';
@@ -8,7 +9,7 @@ import { PaginaNaoEncontradaComponent } from './componentes/utils/pagina-nao-enc
 const routes: Routes = [
   { path: "", component: MarcasComponent },
   { path: "login", component: LoginComponent },
-  { path: "produtos", component: PaginaConstrucaoComponent },
+  { path: "produtos", component: ProdutosComponent },
   { path: "orcamentos", component: PaginaConstrucaoComponent },
   { path: "vendas", component: PaginaConstrucaoComponent },
   { path: "sistema/produtos", component: PaginaConstrucaoComponent },

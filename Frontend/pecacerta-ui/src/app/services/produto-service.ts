@@ -4,8 +4,6 @@ import { Observable, EMPTY } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Produto } from '../models/produto';
 
-
-
 @Injectable()
 export class ProdutoService {
 

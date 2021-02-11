@@ -1,3 +1,5 @@
+import { ProdutoService } from './../../../services/produto-service';
+import { Marca } from './../../../models/marca';
 import { Categoria } from 'src/app/models/categoria';
 import { CategoriaService } from 'src/app/services/categoria-service';
 import { Component, OnInit } from '@angular/core';
@@ -10,14 +12,17 @@ import { Produto } from 'src/app/models/produto';
 })
 export class ProdutosComponent implements OnInit {
   categorias: Categoria[] = [];
+  marcas: Marca[] = []
   produtos: Produto[] = [];
   clonedProdutos : {
     [s:string]:Produto;
   } = {};
-  constructor(private categoriaService : CategoriaService) { }
+  constructor(private categoriaService : CategoriaService, private marcaService : MarcaService, private produtoService : ProdutoService) { }
 
   ngOnInit(): void {
     this.categoriaService.read().subscribe(Response => {this.categorias = Response});
+    this.marcaService.read().subscribe(Response => {this.marcas = Response});
+    this.produtoService.read().subscribe(Response => {this.categorias = Response});
   }
 
   onRowEditInit(produto: Produto) {

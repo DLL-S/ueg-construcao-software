@@ -75,17 +75,6 @@
                         </ng-template>
                     </p-cellEditor>
                 </td>
-
-                <td style="text-align:center">
-                    <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
-                        (click)="onRowEditInit(produto)" class="p-button-rounded p-button-text"></button>
-                    <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"
-                        (click)="onRowEditSave(produto)"
-                        class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
-                    <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
-                        (click)="onRowEditCancel(produto, ri)"
-                        class="p-button-rounded p-button-text p-button-danger"></button>
-                </td>
             </tr>
         </ng-template>
     </p-table>

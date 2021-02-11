@@ -1,62 +1,59 @@
 <app-cabecalho></app-cabecalho>
 
 <div class="card">
-    <p-toolbar styleClass="p-mb-4 barra">
-        <ng-template pTemplate="left">
-            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="abreNovo()"></button>
-        </ng-template>
-    </p-toolbar>
+    <form #marcasForm="ngForm" class="p-fluid p-formgrid p-grid">
 
-    <p-table #dt [value]="marcas" [rows]="10" [paginator]="true" [globalFilterFields]="['codigo','nome']" [rowHover]="true" dataKey="codigo"
-        currentPageReportTemplate="Exibindo de {first} à {last} do total de {totalRecords} entradas" [showCurrentPageReport]="true">
+        <div class="p-field p-col-12 p-md-4">
+            <label for="codigo">Código</label>
+            <input pInputText id="codigo" class="p-mb-2" name="codigo" type="text" disabled [(ngModel)]="marca.codigo" placeholder="NOVO">
+        </div>
+
+        <div class="p-field p-col-12 p-md-8">
+            <label for="marca">Marca</label>
+            <input pInputText id="marca" class="p-mb-2" name="marca" type="text" required [(ngModel)]="marca.nome" placeholder="Insira o nome da marca">
+        </div>
+
+		<div class="p-field p-col-12 p-md-10"></div>
+		<div class="p-field p-col-12 p-md-1">
+            <button pButton type="reset" *ngIf="marca.codigo != 0 && marca.codigo != null" label="Limpar"></button>
+        </div>
+        <div class="p-field p-col-12 p-md-1">
+            <button pButton type="submit" [disabled]="!marcasForm.valid" (click)="salvaMarca(); marcasForm.reset()" label="Salvar"></button>
+        </div>
+    </form>
+
+    <p-table #dt [value]="marcas" [rows]="10" [paginator]="true" [globalFilterFields]="['codigo','nome']"
+        [rowHover]="true" dataKey="codigo"
+        currentPageReportTemplate="Exibindo de {first} à {last} do total de {totalRecords} entradas"
+        [showCurrentPageReport]="true" ortMode="multiple" sortField="codigo">
 
         <ng-template pTemplate="caption">
             <div class="p-d-flex p-ai-center p-jc-between">
                 <h5 class="p-m-0">Marcas</h5>
                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Pesquisar..." />
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Pesquisar..." />
                 </span>
             </div>
         </ng-template>
 
         <ng-template pTemplate="header">
             <tr>
-                <th pSortableColumn="codigo">Codigo <p-sortIcon field="codigo"></p-sortIcon></th>
-                <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon></th>
-                <th></th>
+                <th pSortableColumn="codigo">Codigo <p-sortIcon field="codigo"></p-sortIcon>
+                </th>
+                <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon>
+                </th>
             </tr>
         </ng-template>
 
         <ng-template pTemplate="body" let-marca>
-            <tr>
+            <tr (click)="editaMarca(marca)">
                 <td>{{ marca.codigo }}</td>
                 <td>{{ marca.nome }}</td>
-                <td>
-                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editaMarca(marca)"></button>
-                </td>
             </tr>
         </ng-template>
 
     </p-table>
 </div>
 
-<p-dialog [(visible)]="marcaDialog" [style]="{width: '450px'}" header="Detalhes da marca" [modal]="true" styleClass="p-fluid">
-
-    <ng-template pTemplate="content">
-        <div class="p-field">
-            <label for="nome">Código</label>
-            <input type="text" pInputText id="codigo" readonly [(ngModel)]="marca.codigo" placeholder="NOVO"/>
-        </div>
-        <div class="p-field">
-            <label for="nome">Nome</label>
-            <input type="text" pInputText id="nome" [(ngModel)]="marca.nome" required autofocus />
-            <small class="p-error" *ngIf="submitted && !marca.nome">Name is required.</small>
-        </div>
-    </ng-template>
-
-    <ng-template pTemplate="footer">
-        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="escondeDialogo()"></button>
-        <button pButton pRipple label="Salvar" icon="pi pi-check" class="p-button-text" (click)="salvaMarca()"></button>
-    </ng-template>
-</p-dialog>

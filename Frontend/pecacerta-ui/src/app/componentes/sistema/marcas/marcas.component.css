@@ -4,9 +4,8 @@
 	display: block;
 }
 
-.barra {
-	position: absolute;
-	padding-top: 50%;
-
+form {
+	position: relative;
+	padding-top: 90px;
+	margin-bottom: 25px;
 }
-

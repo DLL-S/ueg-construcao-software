@@ -12,11 +12,9 @@ import { MarcaService } from './../../../services/marca-service';
 })
 export class MarcasComponent implements OnInit {
 
-  marcaDialog: boolean;
-
   marcas: Marca[];
 
-  marca: Marca;
+  marca: Marca = {};;
 
   submitted: boolean;
 
@@ -26,20 +24,8 @@ export class MarcasComponent implements OnInit {
     this.marcaService.read().subscribe(Response => { this.marcas = Response });
   }
 
-  abreNovo() {
-    this.marca = {};
-    this.submitted = false;
-    this.marcaDialog = true;
-  }
-
   editaMarca(marca: Marca) {
     this.marca = { ...marca };
-    this.marcaDialog = true;
-  }
-
-  escondeDialogo() {
-    this.marcaDialog = false;
-    this.submitted = false;
   }
 
   salvaMarca() {
@@ -56,8 +42,8 @@ export class MarcasComponent implements OnInit {
       }
 
       this.marcas = [...this.marcas];
-      this.marcaDialog = false;
       this.marca = {};
+      window.location.reload();
     }
   }
 

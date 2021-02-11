@@ -31,8 +31,8 @@ export class CategoriaService {
         );
       }
     
-      update(codigo: number): Observable<number> {
-        const url = `${this.baseUrl}/${codigo}`;
-        return this.http.put<number>(url, codigo);
+      update(categoria: Categoria): Observable<Categoria> {
+        const url = `${this.baseUrl}/${categoria.codigo}`;
+        return this.http.put<Categoria>(url, categoria);
       }
 }

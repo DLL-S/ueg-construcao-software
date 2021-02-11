@@ -1,0 +1,27 @@
+
+
+#categoria-field{
+    width: 10px;
+}
+
+#column-item{
+    cursor: pointer;
+}
+
+.button-salvar{
+    width: 120px;    
+    align-self:flex-end;
+}
+
+.button-limpar{
+    width: 120px;
+    margin-right: 20px;
+}
+
+.acoes-botao{
+    display: inline;
+    width: auto;
+    align-self:flex-end;
+    align-content: flex-end;
+    margin-bottom: 20px;
+}

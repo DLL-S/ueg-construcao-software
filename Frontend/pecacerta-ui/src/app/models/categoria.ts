@@ -1,4 +1,4 @@
-export interface Categoria {
+export class Categoria {
     codigo?: number;
     nome?: String;
 }

@@ -18,7 +18,7 @@ export class ProdutoService {
       }
 
       read(): Observable<Produto[]>{
-        return this.http.get<Produto[]>(this.baseUrl)
+        return this.http.get<Produto[]>(this.baseUrl+"s")
 
       }
 

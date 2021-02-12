@@ -11,7 +11,7 @@
 }
 
 .codBarras {
-  width: 400px;
+  width: 300px;
 }
 
 .nome {
@@ -40,9 +40,34 @@ input {
 
 h4 {
   margin-bottom: 2px;
+  margin-top: 10px;
 }
 
 section{
   margin: auto;
-  margin-top: 30px;
+  margin-top: 10px;
+}
+
+tr{
+  cursor: pointer;
+}
+
+.button-salvar{
+  width: 120px;
+  align-self:flex-end;
+  margin-right: 10px;
+}
+
+.button-limpar{
+  width: 120px;
+  margin-right: 20px;
+}
+
+.acoes-botao{
+  width: auto;
+  align-self:flex-end;
+  align-content: flex-end;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-top: 20px;
 }

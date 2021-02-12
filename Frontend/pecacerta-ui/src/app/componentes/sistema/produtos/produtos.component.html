@@ -1,23 +1,25 @@
 <app-cabecalho></app-cabecalho>
 <section class='produtos'>
-  <form #produtoForm="ngForm" >
+  <form #produtoForm="ngForm" id="produtoForm" class="p-d-flex p-flex-column">
   <div class='linhaUm linhas'>
+    <div class='field codigo'>
+      <h4>Codigo</h4>
+      <input type="text" pInputText ngModel name="codigo" [(ngModel)]="produto.codigo" disabled>
+    </div>
     <div class='field codBarras'>
       <h4>Codigo de barras*</h4>
-      <input type="text" pInputText>
+      <input type="text" pInputText ngModel name="codigoDeBarras" [(ngModel)]="produto.codigoDeBarras" maxlength="10">
     </div>
     <div class='field nome'>
       <h4>Nome*</h4>
-      <input type="text" pInputText>
-      <-- [(ngModel)]="value1" -->
+      <input type="text" pInputText ngModel name="nome" [(ngModel)]="produto.nome" >
     </div>
   </div>
 
   <div class='linhaDois linhas'>
     <div class='field descricao'>
       <h4>Descrição</h4>
-      <input class="inputDescricao" type="text" pInputText>
-      <-- [(ngModel)]="value1" -->
+      <input class="inputDescricao" type="text" pInputText ngModel name="descricao" [(ngModel)]="produto.descricao">
     </div>
   </div>
 
@@ -25,58 +27,66 @@
 
     <div class='field'>
       <h4>Categoria*</h4>
-      <p-dropdown optionLabel="name">
+      <p-dropdown optionLabel="nome" [options]="categorias" ngModel name="categoria" [(ngModel)]="produto.categoria">
 
       </p-dropdown>
     </div>
     <div class='field'>
       <h4>Marca*</h4>
-      <p-dropdown optionLabel="name">
-        <-- [options]="produtos" [(ngModel)]="selectedCity" -->
+      <p-dropdown optionLabel="nome" [options]="marcas" ngModel name="marca" [(ngModel)]="produto.marca">
 
       </p-dropdown>
     </div>
     <div class='field'>
       <h4>Preço</h4>
-      <input type="text" pInputText>
-      <-- [(ngModel)]="value1" -->
+      <input type="number" pInputText [(ngModel)]="produto.preco" ngModel name="preco" step="0.01" min="0">
     </div>
     <div class='field'>
       <h4>Quantidade inicial</h4>
-      <input type="text" pInputText>
-      <-- [(ngModel)]="value1" -->
+      <input type="number" pInputText [(ngModel)]="produto.qtdeEstoque" ngModel name="qtdeEstoque" min="0">
     </div>
   </div>
 
-  <button class="button-salvar" pButton type="submit" [disabled]="!produtoForm.valid" label="Salvar"></button>
-  </form>
-  <div class="card">
-    <h5>Produtos</h5>
-    <p-table [value]="produtos" dataKey="codigo" editMode="row">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>Código</th>
-                <th>Nome</th>
-                <th style="width:8rem"></th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-produto let-editing="editing" let-ri="rowIndex">
-            <tr [pEditableRow]="produto">
-                <td>
-                    {{produto.codigo}}
-                </td>
-                <td pEditableColumn>
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="produto.nome" required>
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{produto.nome}}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
+  <div class="acoes-botao">
+    <button class="button-limpar" pButton type="submit" form="produtoForm" *ngIf="produto.codigo != 0 && produto.codigo != null" (click)="limpaFormulario()" label="Limpar"></button>
+    <button class="button-salvar" pButton type="submit" form="produtoForm" produtoForm.valid (click)="onSubmit()" label="{{textoBotao}}"></button>
+  </div>
+
+</form>
+
+
+
+<div class="card">
+<p-table id="column-item" #dt [value]="produtos" [rows]="10" [paginator]="true" [globalFilterFields]="['codigo','nome']" [rowHover]="true" dataKey="codigo"
+currentPageReportTemplate="Exibindo de {first} à {last} do total de {totalRecords} entradas" [showCurrentPageReport]="true"
+ortMode="multiple" sortField="codigo">
+<ng-template pTemplate="caption">
+    <div class="p-d-flex p-ai-center p-jc-between">
+        <h5 class="p-m-0">Produtos</h5>
+        <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Pesquisar..." />
+        </span>
+    </div>
+</ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="codigo">Codigo <p-sortIcon field="codigo"></p-sortIcon></th>
+            <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon></th>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-produtoItemTabela>
+        <tr (click)="alteraProduto(produtoItemTabela);">
+            <td>
+                {{produtoItemTabela.codigo}}
+            </td>
+            <td>
+                 {{produtoItemTabela.nome}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
 </div>
+
 </section>

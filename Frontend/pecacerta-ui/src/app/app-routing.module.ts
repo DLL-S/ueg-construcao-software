@@ -5,14 +5,15 @@ import { LoginComponent } from './componentes/login/login.component';
 import { MarcasComponent } from './componentes/sistema/marcas/marcas.component';
 import { PaginaConstrucaoComponent } from './componentes/utils/pagina-construcao/pagina-construcao.component';
 import { PaginaNaoEncontradaComponent } from './componentes/utils/pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { CategoriasComponent } from './componentes/sistema/categorias/categorias.component';
 
 const routes: Routes = [
-  { path: "", component: MarcasComponent },
+  { path: "", component: LoginComponent },
   { path: "login", component: LoginComponent },
   { path: "produtos", component: ProdutosComponent },
   { path: "orcamentos", component: PaginaConstrucaoComponent },
   { path: "vendas", component: PaginaConstrucaoComponent },
-  { path: "sistema/produtos", component: PaginaConstrucaoComponent },
+  { path: "sistema/categorias", component: CategoriasComponent },
   { path: "sistema/marcas", component: MarcasComponent },
   { path: "**", component: PaginaNaoEncontradaComponent }
 ];

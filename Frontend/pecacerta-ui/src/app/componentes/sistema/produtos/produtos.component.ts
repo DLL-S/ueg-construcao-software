@@ -25,6 +25,7 @@ export class ProdutosComponent implements OnInit {
 
   ngOnInit(): void {
     this.produto = new Produto();
+    this.textoBotao = "Salvar";
     this.categoriaService.read().subscribe(Response => {this.categorias = Response});
     this.marcaService.read().subscribe(Response => {this.marcas = Response});
     this.produtoService.read().subscribe(Response => {this.produtos = Response});
@@ -47,8 +48,8 @@ export class ProdutosComponent implements OnInit {
       this.produtoService.update(this.produto).subscribe(
         response => { this.categorias[this.findIndexById(this.produto.codigo)] = response });
       }
-      window.location.reload();
 
+      window.location.reload();
   }
 
 findIndexById(codigo: number): number {
@@ -64,10 +65,16 @@ findIndexById(codigo: number): number {
 }
 
 
-alteraCategoria(produto: Produto){
+alteraProduto(produto: Produto){
   this.textoBotao = "Alterar";
   this.produto.codigo = produto.codigo;
+  this.produto.codigoDeBarras = produto.codigoDeBarras;
   this.produto.nome = produto.nome;
+  this.produto.descricao = produto.descricao;
+  this.produto.marca = produto.marca;
+  this.produto.categoria = produto.categoria;
+  this.produto.preco = produto.preco;
+  this.produto.qtdeEstoque = produto.qtdeEstoque;
 }
 
 limpaFormulario(){

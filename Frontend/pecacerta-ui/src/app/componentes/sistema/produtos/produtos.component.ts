@@ -26,8 +26,8 @@ export class ProdutosComponent implements OnInit {
   ngOnInit(): void {
     this.produto = new Produto();
     this.textoBotao = "Salvar";
-    this.categoriaService.read().subscribe(Response => {this.categorias = Response});
-    this.marcaService.read().subscribe(Response => {this.marcas = Response});
+    this.categoriaService.read().subscribe(Response => {this.categorias = Response.sort((a,b) => a.nome.localeCompare(b.nome))});
+    this.marcaService.read().subscribe(Response => {this.marcas = Response.sort((a,b) => a.nome.localeCompare(b.nome))});
     this.produtoService.read().subscribe(Response => {this.produtos = Response});
   }
 

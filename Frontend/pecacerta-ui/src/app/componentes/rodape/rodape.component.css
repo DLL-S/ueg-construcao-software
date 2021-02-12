@@ -1,0 +1,15 @@
+:host {
+    background: #DFE6ED;
+    color:#293845;
+    position: fixed;
+    bottom:0;
+    left: 0;
+    width: 100vw;
+    z-index: 10000;
+	height: 38px;
+}
+
+.principal {
+	margin: auto;
+	width: 100vw;
+}

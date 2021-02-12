@@ -29,6 +29,7 @@ import { PaginaConstrucaoComponent } from './componentes/utils/pagina-construcao
 import { PaginaNaoEncontradaComponent } from './componentes/utils/pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { MarcasComponent } from './componentes/sistema/marcas/marcas.component';
 import { MarcaService } from './services/marca-service';
+import { RodapeComponent } from './componentes/rodape/rodape.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MarcaService } from './services/marca-service';
     MensagensComponent,
     PaginaConstrucaoComponent,
     PaginaNaoEncontradaComponent,
-    MarcasComponent
+    MarcasComponent,
+    RodapeComponent
   ],
   imports: [
     BrowserModule,

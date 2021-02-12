@@ -49,7 +49,7 @@ export class ProdutosComponent implements OnInit {
         response => { this.categorias[this.findIndexById(this.produto.codigo)] = response });
       }
 
-      window.location.reload();
+      //window.location.reload();
   }
 
 findIndexById(codigo: number): number {

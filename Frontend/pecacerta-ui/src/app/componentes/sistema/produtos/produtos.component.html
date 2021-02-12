@@ -48,7 +48,7 @@
   </div>
 
   <div class="acoes-botao">
-    <button class="button-limpar" pButton type="submit" form="produtoForm" *ngIf="produto.codigo != 0 && produto.codigo != null" (click)="limpaFormulario()" label="Limpar"></button>
+    <button class="button-limpar" pButton type="submit" form="produtoForm" *ngIf="produto.codigo != 0 && produto.codigo != null" label="Limpar" (click)="produtoForm.reset()"></button>
     <button class="button-salvar" pButton type="submit" form="produtoForm" produtoForm.valid (click)="onSubmit()" label="{{textoBotao}}"></button>
   </div>
 

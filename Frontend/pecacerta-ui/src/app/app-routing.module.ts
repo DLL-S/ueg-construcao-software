@@ -10,10 +10,11 @@ import { CategoriasComponent } from './componentes/sistema/categorias/categorias
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "login", component: LoginComponent },
-  { path: "produtos", component: ProdutosComponent },
+  { path: "produtos", component: PaginaConstrucaoComponent },
   { path: "orcamentos", component: PaginaConstrucaoComponent },
   { path: "vendas", component: PaginaConstrucaoComponent },
   { path: "sistema/categorias", component: CategoriasComponent },
+  { path: "sistema/produtos", component: ProdutosComponent },
   { path: "sistema/marcas", component: MarcasComponent },
   { path: "**", component: PaginaNaoEncontradaComponent }
 ];

@@ -49,37 +49,36 @@ export class ProdutosComponent implements OnInit {
         response => { this.categorias[this.findIndexById(this.produto.codigo)] = response });
       }
 
-      //window.location.reload();
+      window.location.reload();
   }
 
-findIndexById(codigo: number): number {
-  let index = -1;
-  for (let i = 0; i < this.produtos.length; i++) {
-    if (this.produtos[i].codigo === codigo) {
-      index = i;
-      break;
+  findIndexById(codigo: number): number {
+    let index = -1;
+    for (let i = 0; i < this.produtos.length; i++) {
+      if (this.produtos[i].codigo === codigo) {
+        index = i;
+        break;
+      }
     }
+
+    return index;
   }
 
-  return index;
-}
 
+  alteraProduto(produto: Produto){
+    this.textoBotao = "Alterar";
+    this.produto.codigo = produto.codigo;
+    this.produto.codigoDeBarras = produto.codigoDeBarras;
+    this.produto.nome = produto.nome;
+    this.produto.descricao = produto.descricao;
+    this.produto.marca = produto.marca;
+    this.produto.categoria = produto.categoria;
+    this.produto.preco = produto.preco;
+    this.produto.qtdeEstoque = produto.qtdeEstoque;
+  }
 
-alteraProduto(produto: Produto){
-  this.textoBotao = "Alterar";
-  this.produto.codigo = produto.codigo;
-  this.produto.codigoDeBarras = produto.codigoDeBarras;
-  this.produto.nome = produto.nome;
-  this.produto.descricao = produto.descricao;
-  this.produto.marca = produto.marca;
-  this.produto.categoria = produto.categoria;
-  this.produto.preco = produto.preco;
-  this.produto.qtdeEstoque = produto.qtdeEstoque;
-}
-
-limpaFormulario(){
-  window.location.reload();
-  this.textoBotao = "Salvar";
-}
+  limpaFormulario(){
+    this.textoBotao = "Salvar";
+  }
 
 }

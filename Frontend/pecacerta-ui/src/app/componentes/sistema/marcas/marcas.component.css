@@ -1,11 +1,15 @@
-:host ::ng-deep .p-dialog {
-	width: 150px;
-	margin: 0 auto 2rem auto;
-	display: block;
+.marcas {
+	max-width: 80%;
+	margin-right: 20px;
+  	padding-right: 5px;
+  	padding-top: 80px;
 }
 
-form {
-	position: relative;
-	padding-top: 90px;
-	margin-bottom: 25px;
+section{
+	margin: auto;
+	margin-top: 10px;
+  }
+
+#column-item{
+    cursor: pointer;
 }

@@ -10,6 +10,7 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ToolbarModule } from 'primeng/toolbar';
 import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -57,7 +58,8 @@ import { MarcaService } from './services/marca-service';
     MessagesModule,
     MessageModule,
     ToolbarModule,
-    DialogModule
+    DialogModule,
+    InputNumberModule
   ],
   providers: [
     CategoriaService,

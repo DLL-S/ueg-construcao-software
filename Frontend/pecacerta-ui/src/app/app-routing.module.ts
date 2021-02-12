@@ -8,7 +8,7 @@ import { PaginaNaoEncontradaComponent } from './componentes/utils/pagina-nao-enc
 import { CategoriasComponent } from './componentes/sistema/categorias/categorias.component';
 
 const routes: Routes = [
-  { path: "", component: LoginComponent },
+  { path: "", component: ProdutosComponent },
   { path: "login", component: LoginComponent },
   { path: "produtos", component: PaginaConstrucaoComponent },
   { path: "orcamentos", component: PaginaConstrucaoComponent },
@@ -16,6 +16,8 @@ const routes: Routes = [
   { path: "sistema/categorias", component: CategoriasComponent },
   { path: "sistema/produtos", component: ProdutosComponent },
   { path: "sistema/marcas", component: MarcasComponent },
+  { path: "sistema/estoque", component: PaginaConstrucaoComponent },
+  { path: "sistema/funcionarios", component: PaginaConstrucaoComponent },
   { path: "**", component: PaginaNaoEncontradaComponent }
 ];
 

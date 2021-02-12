@@ -5,20 +5,10 @@
 @import "../node_modules/primeng/resources/themes/saga-blue/theme.css";
 @import "../node_modules/primeng/resources/primeng.min.css";
 
-*{
-  margin: 0%;
-}
-
 body {
 	font-family: Helvetica,Verdana,Arial,sans-serif;
 }
 
-nav{
-  background-color: #DFE6ED;
-  display: list-item;
+.btnSalvar {
+	background-color: #18778C !important;
 }
-
-app-login{
-  background-color: #DFE6ED;
-}
-

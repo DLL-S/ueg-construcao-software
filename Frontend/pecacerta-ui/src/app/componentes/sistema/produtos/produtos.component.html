@@ -1,92 +1,112 @@
 <app-cabecalho></app-cabecalho>
+<app-barra-lateral></app-barra-lateral>
+
 <section class='produtos'>
-  <form #produtoForm="ngForm" id="produtoForm" class="p-d-flex p-flex-column">
-  <div class='linhaUm linhas'>
-    <div class='field codigo'>
+  <form #produtoForm="ngForm" id="produtoForm" class="p-fluid p-formgrid p-grid">
+
+    <div class='p-field p-col-12 p-md-1'>
       <h4>Codigo</h4>
-      <input type="text" pInputText ngModel name="codigo" [(ngModel)]="produto.codigo" disabled>
+      <input type="text" pInputText ngModel name="codigo" [(ngModel)]="produto.codigo" disabled placeholder="Novo">
     </div>
-    <div class='field codBarras'>
+
+    <div class='p-field p-col-12 p-md-2'>
       <h4>Codigo de barras*</h4>
-      <input type="text" pInputText ngModel name="codigoDeBarras" [(ngModel)]="produto.codigoDeBarras" minlength="13" maxlength="13">
+      <input type="text" pInputText ngModel name="codigoDeBarras" required [(ngModel)]="produto.codigoDeBarras"
+        minlength="13" maxlength="13" placeholder="Código de barras do produto">
     </div>
-    <div class='field nome'>
+
+    <div class='p-field p-col-12 p-md-9'>
       <h4>Nome*</h4>
-      <input type="text" pInputText ngModel name="nome" [(ngModel)]="produto.nome" >
+      <input type="text" pInputText ngModel name="nome" required [(ngModel)]="produto.nome" placeholder="Nome do produto">
     </div>
-  </div>
 
-  <div class='linhaDois linhas'>
-    <div class='field descricao'>
+    <div class='p-field p-col-12 p-md-12'>
       <h4>Descrição</h4>
-      <input class="inputDescricao" type="text" pInputText ngModel name="descricao" [(ngModel)]="produto.descricao">
+      <input class="inputDescricao" type="text" pInputText ngModel name="descricao" [(ngModel)]="produto.descricao" placeholder="Descrição do produto">
     </div>
-  </div>
 
-  <div class='linhaTres linhas'>
-
-    <div class='field'>
+    <div class='p-field p-col-12 p-md-3'>
       <h4>Categoria*</h4>
-      <p-dropdown optionLabel="nome" [options]="categorias" ngModel name="categoria" [(ngModel)]="produto.categoria"  placeholder="Selecionar...">
-
+      <p-dropdown optionLabel="nome" [options]="categorias" ngModel name="categoria" [(ngModel)]="produto.categoria"
+        placeholder="Selecionar..." required>
       </p-dropdown>
     </div>
-    <div class='field'>
+
+    <div class='p-field p-col-12 p-md-3'>
       <h4>Marca*</h4>
-      <p-dropdown optionLabel="nome" [options]="marcas" ngModel name="marca" [(ngModel)]="produto.marca" placeholder="Selecionar...">
-
+      <p-dropdown optionLabel="nome" [options]="marcas" ngModel name="marca" [(ngModel)]="produto.marca"
+        placeholder="Selecionar..." required>
       </p-dropdown>
     </div>
-    <div class='field'>
-      <h4>Preço</h4>
-      <input type="number" pInputText [(ngModel)]="produto.preco" ngModel name="preco" step="0.01" min="0">
+
+    <div class='p-field p-col-12 p-md-3'>
+      <h4>Preço*</h4>
+      <p-inputNumber name="preco" [(ngModel)]="produto.preco" required mode="currency" currency="BRL" locale="pt-BR"
+			placeholder="R$ 0,00" (click)="$event.target.select()" aria-describedby="valor-help"></p-inputNumber>
     </div>
-    <div class='field'>
-      <h4>Quantidade inicial</h4>
-      <input type="number" pInputText [(ngModel)]="produto.qtdeEstoque" ngModel name="qtdeEstoque" min="0">
+
+    <div class='p-field p-col-12 p-md-3'>
+      <h4>Quantidade inicial*</h4>
+      <input type="number" pInputText [(ngModel)]="produto.qtdeEstoque" required ngModel name="qtdeEstoque" min="0" placeholder="0">
     </div>
-  </div>
 
-  <div class="acoes-botao">
-    <button class="button-limpar" pButton type="submit" form="produtoForm" *ngIf="produto.codigo != 0 && produto.codigo != null" label="Limpar" (click)="limpaFormulario(); produtoForm.reset()"></button>
-    <button class="button-salvar" pButton type="submit" form="produtoForm" produtoForm.valid (click)="onSubmit()" label="{{textoBotao}}"></button>
-  </div>
+    <div class="p-field p-col-12 p-md-10"></div>
+    <div class="p-field p-col-12 p-md-1">
+      <button pButton pRipple type="reset" *ngIf="produto.codigo != 0 && produto.codigo != null" label="Limpar" class="p-button-outlined p-button-secondary"></button>
+    </div>
+    <div class="p-field p-col-12 p-md-1">
+      <button class="btnSalvar" pButton [disabled]="!produtoForm.valid" type="submit" form="produtoForm"
+        produtoForm.valid (click)="onSubmit()" label="{{textoBotao}}"></button>
+    </div>
 
-</form>
+  </form>
 
-
-
-<div class="card">
-<p-table id="column-item" #dt [value]="produtos" [rows]="10" [paginator]="true" [globalFilterFields]="['codigo','nome']" [rowHover]="true" dataKey="codigo"
-currentPageReportTemplate="Exibindo de {first} à {last} do total de {totalRecords} entradas" [showCurrentPageReport]="true"
-ortMode="multiple" sortField="codigo">
-<ng-template pTemplate="caption">
-    <div class="p-d-flex p-ai-center p-jc-between">
-        <h5 class="p-m-0">Produtos</h5>
-        <span class="p-input-icon-left">
+  <div class="card">
+    <p-table id="column-item" #dt [value]="produtos" [rows]="10" [paginator]="true"
+      [globalFilterFields]="['codigo','nome']" [rowHover]="true" dataKey="codigo"
+      currentPageReportTemplate="Exibindo de {first} à {last} do total de {totalRecords} entradas"
+      [showCurrentPageReport]="true" ortMode="multiple" sortField="codigo">
+      <ng-template pTemplate="caption">
+        <div class="p-d-flex p-ai-center p-jc-between">
+          <h5 class="p-m-0">Produtos</h5>
+          <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
-            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Pesquisar..." />
-        </span>
-    </div>
-</ng-template>
-    <ng-template pTemplate="header">
+            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+              placeholder="Pesquisar..." />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
         <tr>
-            <th pSortableColumn="codigo">Codigo <p-sortIcon field="codigo"></p-sortIcon></th>
-            <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon></th>
+          <th pSortableColumn="codigo">Codigo <p-sortIcon field="codigo"></p-sortIcon>
+          </th>
+          <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon>
+          </th>
+          <th pSortableColumn="descricao">Descrição <p-sortIcon field="descricao"></p-sortIcon>
+          </th>
+          <th pSortableColumn="categoria">Categoria <p-sortIcon field="categoria"></p-sortIcon>
+          </th>
+          <th pSortableColumn="marca">Marca <p-sortIcon field="marca"></p-sortIcon>
+          </th>
+          <th pSortableColumn="preco">Preço <p-sortIcon field="preco"></p-sortIcon>
+          </th>
+          <th pSortableColumn="estoque">Estoque <p-sortIcon field="estoque"></p-sortIcon>
+          </th>
 
         </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-produtoItemTabela>
+      </ng-template>
+      <ng-template pTemplate="body" let-produtoItemTabela>
         <tr (click)="alteraProduto(produtoItemTabela);">
-            <td>
-                {{produtoItemTabela.codigo}}
-            </td>
-            <td>
-                 {{produtoItemTabela.nome}}
-            </td>
+          <td>{{produtoItemTabela.codigo}}</td>
+          <td>{{produtoItemTabela.nome}}</td>
+          <td>{{produtoItemTabela.descricao}}</td>
+          <td>{{produtoItemTabela.categoria.nome}}</td>
+          <td>{{produtoItemTabela.marca.nome}}</td>
+          <td>{{produtoItemTabela.preco | currency: 'BRL'}}</td>
+          <td>{{produtoItemTabela.qtdeEstoque}}</td>
         </tr>
-    </ng-template>
-</p-table>
-</div>
+      </ng-template>
+    </p-table>
+  </div>
 
 </section>

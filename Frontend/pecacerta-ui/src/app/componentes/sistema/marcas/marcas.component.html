@@ -1,31 +1,31 @@
 <app-cabecalho></app-cabecalho>
+<app-barra-lateral></app-barra-lateral>
 
-<div class="card">
+<section class="marcas">
     <form #marcasForm="ngForm" class="p-fluid p-formgrid p-grid">
 
         <div class="p-field p-col-12 p-md-4">
             <label for="codigo">Código</label>
-            <input pInputText id="codigo" class="p-mb-2" name="codigo" type="text" disabled [(ngModel)]="marca.codigo" placeholder="NOVO">
+            <input pInputText id="codigo" class="p-mb-2" name="codigo" type="text" disabled [(ngModel)]="marca.codigo" placeholder="Novo">
         </div>
 
         <div class="p-field p-col-12 p-md-8">
             <label for="marca">Marca</label>
-            <input pInputText id="marca" class="p-mb-2" name="marca" type="text" required [(ngModel)]="marca.nome" placeholder="Insira o nome da marca">
+            <input pInputText id="marca" class="p-mb-2" name="marca" type="text" required [(ngModel)]="marca.nome" placeholder="Nome da marca">
         </div>
 
 		<div class="p-field p-col-12 p-md-10"></div>
 		<div class="p-field p-col-12 p-md-1">
-            <button pButton type="reset" *ngIf="marca.codigo != 0 && marca.codigo != null" label="Limpar"></button>
+            <button pButton pRipple type="reset" *ngIf="marca.codigo != 0 && marca.codigo != null" label="Limpar" class="p-button-outlined p-button-secondary"></button>
         </div>
         <div class="p-field p-col-12 p-md-1">
-            <button pButton type="submit" [disabled]="!marcasForm.valid" (click)="onSubmit()" label="{{ textoBotao }}"></button>
+            <button class="btnSalvar" pButton type="submit" [disabled]="!marcasForm.valid" (click)="onSubmit()" label="{{ textoBotao }}"></button>
         </div>
     </form>
 
-    <p-table #dt [value]="marcas" [rows]="10" [paginator]="true" [globalFilterFields]="['codigo','nome']"
-        [rowHover]="true" dataKey="codigo"
-        currentPageReportTemplate="Exibindo de {first} à {last} do total de {totalRecords} entradas"
-        [showCurrentPageReport]="true" ortMode="multiple" sortField="codigo">
+    <p-table #dt id="column-item" [value]="marcas" [rows]="10" [paginator]="true" [globalFilterFields]="['codigo','nome']" [rowHover]="true" dataKey="codigo"
+    currentPageReportTemplate="Exibindo de {first} à {last} do total de {totalRecords} entradas" [showCurrentPageReport]="true"
+    ortMode="multiple" sortField="codigo">
 
         <ng-template pTemplate="caption">
             <div class="p-d-flex p-ai-center p-jc-between">
@@ -55,5 +55,5 @@
         </ng-template>
 
     </p-table>
-</div>
+</section>
 

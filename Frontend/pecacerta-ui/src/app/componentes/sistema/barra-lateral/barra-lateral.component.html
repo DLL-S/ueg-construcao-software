@@ -1,3 +1,10 @@
-<p-sidebar [visible]="true" [baseZIndex]="0" [closeOnEscape]="false" [showCloseIcon]="false" [modal]="false" [dismissible]="false" styleClass="p-sidebar-sm">
+<p-sidebar class="barra" [style]="{background: '#DFE6ED', width: '14%', margin: '80px 0 0 0.5rem', height: '87%'}" [visible]="true"
+	[baseZIndex]="0" [closeOnEscape]="false" [showCloseIcon]="false" [modal]="false" [dismissible]="false">
+
+	<p><a routerLink="/sistema/produtos"><i class="fas fa-box"></i> Produtos</a></p>
+	<p><a routerLink="/sistema/estoque"><i class="fas fa-cubes"></i> Estoque</a></p>
+	<p><a routerLink="/sistema/funcionarios"><i class="fas fa-address-card"></i> Funcionários</a></p>
+	<p><a routerLink="/sistema/marcas"><i class="fas fa-list-alt"></i> Marcas</a></p>
+	<p><a routerLink="/sistema/categorias"><i class="fas fa-tags"></i> Categorias</a></p>
 
 </p-sidebar>

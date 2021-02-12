@@ -9,6 +9,10 @@ body {
 	font-family: Helvetica,Verdana,Arial,sans-serif;
 }
 
+* {
+	box-shadow: none !important;
+}
+
 .btnSalvar {
 	background-color: #18778C !important;
 }

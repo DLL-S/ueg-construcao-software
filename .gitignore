@@ -17,3 +17,4 @@ target/
 *.asta.lock
 
 # End of https://www.toptal.com/developers/gitignore/api/java-web
+Backend/pecacerta-api/src/main/resources/application.properties

@@ -18,7 +18,7 @@
             <button pButton type="reset" *ngIf="marca.codigo != 0 && marca.codigo != null" label="Limpar"></button>
         </div>
         <div class="p-field p-col-12 p-md-1">
-            <button pButton type="submit" [disabled]="!marcasForm.valid" (click)="salvaMarca(); marcasForm.reset()" label="Salvar"></button>
+            <button pButton type="submit" [disabled]="!marcasForm.valid" (click)="onSubmit()" label="{{ textoBotao }}"></button>
         </div>
     </form>
 
@@ -48,7 +48,7 @@
         </ng-template>
 
         <ng-template pTemplate="body" let-marca>
-            <tr (click)="editaMarca(marca)">
+            <tr (click)="alteraMarca(marca)">
                 <td>{{ marca.codigo }}</td>
                 <td>{{ marca.nome }}</td>
             </tr>

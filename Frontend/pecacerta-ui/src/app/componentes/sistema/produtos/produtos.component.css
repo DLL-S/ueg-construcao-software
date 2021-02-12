@@ -4,7 +4,9 @@
   padding-right: 20px;
   padding-top: 80px;
 }
-
+.linhaTres .field{
+  width: 100%;
+}
 .field {
   margin-left: 15px;
   padding-left: 0px;
@@ -55,7 +57,7 @@ tr{
 .button-salvar{
   width: 120px;
   align-self:flex-end;
-  margin-right: 10px;
+  margin-right: -10px;
 }
 
 .button-limpar{

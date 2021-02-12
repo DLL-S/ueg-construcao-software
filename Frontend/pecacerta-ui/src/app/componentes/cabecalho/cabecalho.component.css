@@ -1,49 +1,54 @@
-a{
-    
-    margin-left: 30px;
+:host {
+    background: #DFE6ED;
+    color:#293845;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 5.5vw;
+    z-index: 10000;
+}
+
+.principal {
+    width: 70%;
+    height: 70px;
+    align-items: center;
+    display: flex;
+    margin: auto;
+    overflow: hidden;
+}
+
+.logo-pagina img {
+    float: left;
+    width: 70px;
+    height: 70px;
+}
+
+a {
+    margin-left: 20px;
     text-decoration: none;
     color: #293845;
+    vertical-align: sub;
     opacity: 100%;
     transition: opacity 1s;
+}
+
+a:hover {
+    opacity: 60%;
+    transition: opacity 1s;
+}
+
+.icone-usuario {
+    margin-left: auto;
+}
+
+i {
+    font-size: 30px;
+    color: #18778C;
     vertical-align: sub;
 }
 
-a:hover{
-    margin-left: 30px;
-    text-decoration: none;
-    color: #7F8F9C;
-    opacity: 75%;
-    transition: opacity 1s;
-    font-weight: 700;
+.icone-usuario{
+  margin-top: -8px;
 }
 
-nav{
-    align-items: center;    
-    position: sticky;
-    z-index: 20000;
-
-}
-
-.espacador{
-    width: 400px;
-}
-
-i{
-    font-size: 30px;
-    color: #18778C;
-    vertical-align: bottom;
-}
-
-.logo-pagina img{
-    width: 70px;
-    height: 70px;
-    margin: -5px;
-}
-
-.principal{
-    width: 1000px;
-    height: 70px;
-   align-items: center;    
-    display: flex;
-    margin: 0% auto;
-}

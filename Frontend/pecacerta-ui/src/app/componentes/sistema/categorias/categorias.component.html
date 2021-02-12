@@ -2,48 +2,50 @@
 
 <div class="categoria">
 
-    <form #categoriaForm="ngForm" class="p-d-flex p-flex-column">
+    <form id="categoriaForm" #categoriaForm="ngForm" class="p-d-flex p-flex-column">
+
+        <label class="labelCodigo" for="codigo">Código</label>
+        <input class="codigo p-mb-2" pInputText ngModel name="codigo" type="text" disabled [(ngModel)]="categoria.codigo" >
+
         <label for="categoria">Categoria</label>
-        <input class="p-mb-2" pInputText ngModel name="categoria" type="text" required
-            placeholder="Insira o nome da categoria">
-        <button class="button-salvar" pButton type="submit" [disabled]="!categoriaForm.valid" label="Salvar"></button>
+        <input id="cadtegoria-field" class="p-mb-2" pInputText ngModel name="categoria" type="text" required [(ngModel)]="categoria.nome" placeholder="Insira o nome da categoria">
+
+        <div class="acoes-botao">
+            <button class="button-limpar" pButton type="submit" form="categoriaForm" *ngIf="categoria.codigo != 0 && categoria.codigo != null" (click)="limpaFormulario()" label="Limpar"></button>
+            <button class="button-salvar" pButton type="submit" form="categoriaForm" [disabled]="!categoriaForm.valid" (click)="onSubmit()" label="{{textoBotao}}"></button>    
+        </div>
+
     </form>
 
+
+
     <div class="card">
-        <h5>Categorias</h5>
-        <p-table [value]="categorias" dataKey="codigo" editMode="row">
+        <p-table id="column-item" #dt [value]="categorias" [rows]="10" [paginator]="true" [globalFilterFields]="['codigo','nome']" [rowHover]="true" dataKey="codigo"
+        currentPageReportTemplate="Exibindo de {first} à {last} do total de {totalRecords} entradas" [showCurrentPageReport]="true"
+        ortMode="multiple" sortField="codigo">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">Categorias</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Pesquisar..." />
+                </span>
+            </div>
+        </ng-template>
             <ng-template pTemplate="header">
                 <tr>
-                    <th>Código</th>
-                    <th>Nome</th>
-                    <th style="width:8rem"></th>
+                    <th pSortableColumn="codigo">Codigo <p-sortIcon field="codigo"></p-sortIcon></th>
+                    <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon></th>
+                    
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-categoria let-editing="editing" let-ri="rowIndex">
-                <tr [pEditableRow]="categoria">
+            <ng-template pTemplate="body" let-categoriaItemTabela>
+                <tr (click)="alteraCategoria(categoriaItemTabela)">
                     <td>
-                        {{categoria.codigo}}
+                        {{categoriaItemTabela.codigo}}
                     </td>
-                    <td pEditableColumn>
-                        <p-cellEditor>
-                            <ng-template pTemplate="input">
-                                <input pInputText type="text" [(ngModel)]="categoria.nome" required>
-                            </ng-template>
-                            <ng-template pTemplate="output">
-                                {{categoria.nome}}
-                            </ng-template>
-                        </p-cellEditor>
-                    </td>
-
-                    <td style="text-align:center">
-                        <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil"
-                            (click)="onRowEditInit(categoria)" class="p-button-rounded p-button-text"></button>
-                        <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"
-                            (click)="onRowEditSave(categoria)"
-                            class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
-                        <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
-                            (click)="onRowEditCancel(categoria, ri)"
-                            class="p-button-rounded p-button-text p-button-danger"></button>
+                    <td>
+                         {{categoriaItemTabela.nome}}
                     </td>
                 </tr>
             </ng-template>

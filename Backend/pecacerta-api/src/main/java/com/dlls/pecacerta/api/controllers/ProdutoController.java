@@ -24,7 +24,7 @@ import com.dlls.pecacerta.api.repositories.CategoriaRepository;
 import com.dlls.pecacerta.api.repositories.MarcaRepository;
 import com.dlls.pecacerta.api.repositories.ProdutoRepository;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1/")
 public class ProdutoController {

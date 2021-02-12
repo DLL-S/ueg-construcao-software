@@ -22,7 +22,7 @@ import com.dlls.pecacerta.api.model.Marca;
 import com.dlls.pecacerta.api.repositories.MarcaRepository;
 
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1/")
 public class MarcaController {
@@ -31,12 +31,12 @@ public class MarcaController {
 	private MarcaRepository marcaRepository;
 	
 	
-	@PostMapping("marca")
+	@PostMapping("marcas")
 	public Marca incluirMarca(@Validated @RequestBody Marca marca) {
 		return this.marcaRepository.save(marca);
 	}
 	
-	@PutMapping("marca/{id}")
+	@PutMapping("marcas/{id}")
 	public ResponseEntity<Marca> alterarMarca(@PathVariable(value = "id") Long marcaId,
 			@Validated @RequestBody Marca marcaParam) throws ResourceNotFoundException {
 		
@@ -49,7 +49,7 @@ public class MarcaController {
 	}
 	
 	
-	@DeleteMapping("marca/{id}")
+	@DeleteMapping("marcas/{id}")
 	public Map<String, Boolean> excluirCategoria(@PathVariable(value = "id") Long marcaId) throws ResourceNotFoundException {
 		Marca marca = marcaRepository.findById(marcaId)
 				.orElseThrow(() -> new ResourceNotFoundException("Animal não encontrado pelo id " + marcaId));
@@ -62,7 +62,7 @@ public class MarcaController {
 		return response;
 	}
 	
-	@GetMapping("marca/{id}")
+	@GetMapping("marcas/{id}")
 	public ResponseEntity<Marca>  consultarMarca(@PathVariable(value = "id") Long marcaId) throws ResourceNotFoundException {
 	
 		Marca marca = marcaRepository.findById(marcaId)

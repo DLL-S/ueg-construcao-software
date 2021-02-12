@@ -1,0 +1,11 @@
+:host ::ng-deep .p-dialog {
+	width: 150px;
+	margin: 0 auto 2rem auto;
+	display: block;
+}
+
+form {
+	position: relative;
+	padding-top: 90px;
+	margin-bottom: 25px;
+}

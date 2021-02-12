@@ -1,0 +1,13 @@
+img {
+	margin-top: 2em;
+	height: 30em;
+	cursor: pointer;
+}
+
+h1 {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	color: #17212F;
+}

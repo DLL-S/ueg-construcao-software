@@ -1,0 +1,59 @@
+<app-cabecalho></app-cabecalho>
+
+<div class="card">
+    <form #marcasForm="ngForm" class="p-fluid p-formgrid p-grid">
+
+        <div class="p-field p-col-12 p-md-4">
+            <label for="codigo">Código</label>
+            <input pInputText id="codigo" class="p-mb-2" name="codigo" type="text" disabled [(ngModel)]="marca.codigo" placeholder="NOVO">
+        </div>
+
+        <div class="p-field p-col-12 p-md-8">
+            <label for="marca">Marca</label>
+            <input pInputText id="marca" class="p-mb-2" name="marca" type="text" required [(ngModel)]="marca.nome" placeholder="Insira o nome da marca">
+        </div>
+
+		<div class="p-field p-col-12 p-md-10"></div>
+		<div class="p-field p-col-12 p-md-1">
+            <button pButton type="reset" *ngIf="marca.codigo != 0 && marca.codigo != null" label="Limpar"></button>
+        </div>
+        <div class="p-field p-col-12 p-md-1">
+            <button pButton type="submit" [disabled]="!marcasForm.valid" (click)="salvaMarca(); marcasForm.reset()" label="Salvar"></button>
+        </div>
+    </form>
+
+    <p-table #dt [value]="marcas" [rows]="10" [paginator]="true" [globalFilterFields]="['codigo','nome']"
+        [rowHover]="true" dataKey="codigo"
+        currentPageReportTemplate="Exibindo de {first} à {last} do total de {totalRecords} entradas"
+        [showCurrentPageReport]="true" ortMode="multiple" sortField="codigo">
+
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">Marcas</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Pesquisar..." />
+                </span>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="codigo">Codigo <p-sortIcon field="codigo"></p-sortIcon>
+                </th>
+                <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-marca>
+            <tr (click)="editaMarca(marca)">
+                <td>{{ marca.codigo }}</td>
+                <td>{{ marca.nome }}</td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+</div>
+

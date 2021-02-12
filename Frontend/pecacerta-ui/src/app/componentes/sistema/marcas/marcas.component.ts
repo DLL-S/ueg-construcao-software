@@ -13,38 +13,44 @@ import { MarcaService } from './../../../services/marca-service';
 export class MarcasComponent implements OnInit {
 
   marcas: Marca[];
-
   marca: Marca = {};;
-
   submitted: boolean;
+  textoBotao: String;
 
-  constructor(private marcaService: MarcaService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
+  constructor(private marcaService: MarcaService) {
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.marca = {};
+    this.textoBotao = "Salvar";
     this.marcaService.read().subscribe(Response => { this.marcas = Response });
   }
 
-  editaMarca(marca: Marca) {
-    this.marca = { ...marca };
+  salvarMarca() {
+    this.marcaService
+      .create(this.marca).subscribe(data => {
+        console.log(data)
+        this.marca = {};
+      },
+        error => console.log(error));
   }
 
-  salvaMarca() {
+  onSubmit() {
     this.submitted = true;
-
-    if (this.marca.nome.trim()) {
-      if (this.marca.codigo) {
-        this.marcaService.update(this.marca).subscribe(
-          response => { this.marcas[this.findIndexById(this.marca.codigo)] = response });
-      }
-      else {
-        this.marcaService.create(this.marca).subscribe(
-          response => { this.marcas.push(response) });
-      }
-
-      this.marcas = [...this.marcas];
-      this.marca = {};
-      window.location.reload();
+    if (this.marca.codigo == null) {
+      this.salvarMarca();
+    } else {
+      this.marcaService.update(this.marca).subscribe(
+        response => { this.marcas[this.findIndexById(this.marca.codigo)] = response });
     }
+    window.location.reload();
+
+  }
+
+  alteraMarca(marca: Marca) {
+    this.textoBotao = "Alterar";
+    this.marca.codigo = marca.codigo;
+    this.marca.nome = marca.nome;
   }
 
   findIndexById(codigo: number): number {

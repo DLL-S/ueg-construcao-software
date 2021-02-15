@@ -52,7 +52,7 @@
 
     <div class="p-field p-col-12 p-md-10"></div>
     <div class="p-field p-col-12 p-md-1">
-      <button pButton pRipple type="reset" *ngIf="produto.codigo != 0 && produto.codigo != null" label="Limpar" class="p-button-outlined p-button-secondary"></button>
+      <button pButton pRipple type="reset" *ngIf="produto.codigo != 0 && produto.codigo != null || produto.nome != null || produto.codigoDeBarras != null || produto.qtdeEstoque != null || produto.descricao != null || produto.preco != null || produto.marca != null || produto.categoria != null" label="Limpar" (click)='limpaFormulario()' class="p-button-outlined p-button-secondary"></button>
     </div>
     <div class="p-field p-col-12 p-md-1">
       <button class="btnSalvar" pButton [disabled]="!produtoForm.valid" type="submit" form="produtoForm"
@@ -63,7 +63,7 @@
 
   <div class="card">
     <p-table id="column-item" #dt [value]="produtos" [rows]="10" [paginator]="true"
-      [globalFilterFields]="['codigo','nome']" [rowHover]="true" dataKey="codigo"
+      [globalFilterFields]="['codigo','nome','categoria.nome','marca.nome', 'descricao']" [rowHover]="true" dataKey="codigo"
       currentPageReportTemplate="Exibindo de {first} à {last} do total de {totalRecords} entradas"
       [showCurrentPageReport]="true" ortMode="multiple" sortField="codigo">
       <ng-template pTemplate="caption">
@@ -108,5 +108,5 @@
       </ng-template>
     </p-table>
   </div>
-
+  <app-rodape></app-rodape>
 </section>

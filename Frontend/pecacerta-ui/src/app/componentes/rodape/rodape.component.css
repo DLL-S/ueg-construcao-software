@@ -1,15 +1,16 @@
-:host {
-    background: #DFE6ED;
-    color:#293845;
-    position: fixed;
-    bottom:0;
-    left: 0;
-    width: 100vw;
-    z-index: 10000;
-	height: 38px;
+.principal {
+	width: 100%;
+  color:#293845;
+  text-align: center;
+  padding-top: 30px;
+  margin-bottom: 0px;
 }
 
-.principal {
-	margin: auto;
-	width: 100vw;
+img{
+  vertical-align: middle;
+  width: 40px;
+}
+
+i{
+  vertical-align: top;
 }
